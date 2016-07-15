@@ -10,12 +10,13 @@ var pulsarID = "hydrophone"
 // Add a beacon
 var add = function (node, events) {
   if (!isBrowser) return
-  beacons = beacons.concat({
+  const beacon = scanBeacon({
     node: node,
     enters: events.enters,
     leaves: events.leaves,
     visible: false,
   })
+  beacons = beacons.concat(beacon)
   register()
 }
 

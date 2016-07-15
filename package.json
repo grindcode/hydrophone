@@ -1,0 +1,29 @@
+{
+  "name": "hydrophone",
+  "version": "0.1.0",
+  "description": "Track when a DOM node enters or leaves the screen.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js",
+    "report": "nyc tape test/*.js && nyc report --reporter=text-lcov | codeclimate-test-reporter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grindcode/hydrophone.git"
+  },
+  "keywords": [],
+  "author": "Isis T. Baulig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grindcode/hydrophone/issues"
+  },
+  "homepage": "https://github.com/grindcode/hydrophone#readme",
+  "dependencies": {
+    "tiny-pulsar": "^0.1.0"
+  },
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.3",
+    "nyc": "^6.6.1",
+    "tape": "^4.5.1"
+  }
+}

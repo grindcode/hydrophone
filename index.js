@@ -14,7 +14,7 @@ var add = function (node, events) {
     node: node,
     enters: events.enters,
     leaves: events.leaves,
-    isVisible: false,
+    visible: false,
   })
   register()
 }
@@ -41,10 +41,10 @@ var deregister = function () {
 }
 
 var scanBeacon = function (beacon) {
-  let isVisible = isVisible(beacon)
-  if (beacon.isVisible === isVisible) return beacon
-  beacon.isVisible = isVisible
-  if (isVisible && beacon.enters) {
+  let visible = isVisible(beacon)
+  if (beacon.visible === visible) return beacon
+  beacon.visible = visible
+  if (visible && beacon.enters) {
     beacon.enters()
   } else if (beacon.leaves) {
     beacon.leaves()

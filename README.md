@@ -13,8 +13,8 @@ npm install hydrophone
 Start tracking a DOM node.
 * `node`: DOM node object. (**Node**)
 * `events`: Object, containing zero or more of the following properties:
-  *  `appear`: Function called when the element enters the viewport. (**Function**)
-  *  `disappear`: Function called when the element exits the viewport. (**Function**)
+  *  `enters`: Function called when the element enters the viewport. (**Function**)
+  *  `leaves`: Function called when the element exits the viewport. (**Function**)
 
 ### remove(node)
 Stop tracking a DOM node.
@@ -26,7 +26,7 @@ import { add, remove } from 'hydrophone'
 
 var node = document.getElementById('node')
 add(node, {
-  onappear: () => {
+  enters: () => {
     remove(node) // optional
   }
 })

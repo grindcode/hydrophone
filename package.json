@@ -11,7 +11,16 @@
     "type": "git",
     "url": "git+https://github.com/grindcode/hydrophone.git"
   },
-  "keywords": [],
+  "keywords": [
+    "dom",
+    "element",
+    "sonar",
+    "viewport",
+    "screen",
+    "enters",
+    "leaves",
+    "lazy"
+  ],
   "author": "Isis T. Baulig",
   "license": "MIT",
   "bugs": {

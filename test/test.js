@@ -3,8 +3,7 @@ var jsdom = require('jsdom')
 require('jsdom-global')()
 var hydrophone = require('../index.js')
 
-// Force scroll event in order to force recalculation.
-// Same as `resize`
+// Force scroll event in order to force recalculation. Could also be `resize`.
 var fireEvent = function () {
   var scrollEvent = window.document.createEvent("Event")
   scrollEvent.initEvent("scroll", true, true)
@@ -28,9 +27,9 @@ var disableViewport = function () {
   setViewportHeight(false)
 }
 
-// Node doesn't need to be present in DOM, since jsdom will return an object
-// with zero values for `getBoundingClientRect`, used to calculate if element
-// is present in viewport or not. https://github.com/tmpvar/jsdom/pull/689
+// Element does not need to be present in DOM.
+// In jsdom, `getBoundingClientRect` will always return
+// an object with zero values. https://github.com/tmpvar/jsdom/pull/689
 var node = document.createElement('div')
 
 test('element is in viewport', function (t) {

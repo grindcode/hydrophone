@@ -47,7 +47,7 @@ var scanBeacon = function (beacon) {
   beacon.visible = visible
   if (visible && beacon.enters) {
     beacon.enters()
-  } else if (beacon.leaves) {
+  } else if (!visible && beacon.leaves) {
     beacon.leaves()
   }
   return beacon

@@ -1,7 +1,83 @@
 var test = require('tape')
+var jsdom = require('jsdom')
+require('jsdom-global')()
 var hydrophone = require('../index.js')
 
-// test('test hydrophone', function (t) {
-//   t.plan(1)
-//   t.equal(1, 1)
-// })
+// Force scroll event in order to force recalculation.
+// Same as `resize`
+var fireEvent = function () {
+  var scrollEvent = window.document.createEvent("Event")
+  scrollEvent.initEvent("scroll", true, true)
+  window.dispatchEvent(scrollEvent)
+}
+
+// Sets window height in jsdom
+var setViewportHeight = function (height) {
+  window.innerHeight = height
+  document.documentElement.clientWidth = height
+}
+
+var enableViewport = function () {
+  // Default window height value in jsdom.
+  // Any positive numeric value will do the trick.
+  setViewportHeight(768)
+}
+
+var disableViewport = function () {
+  // Falsy window height fakes element not being inside the viewport.
+  setViewportHeight(false)
+}
+
+// Node doesn't need to be present in DOM, since jsdom will return an object
+// with zero values for `getBoundingClientRect`, used to calculate if element
+// is present in viewport or not. https://github.com/tmpvar/jsdom/pull/689
+var node = document.createElement('div')
+
+test('element is in viewport', function (t) {
+  t.plan(1)
+  enableViewport()
+  hydrophone.remove(node)
+  hydrophone.add(node, {
+    enters: function () {
+      t.pass()
+    }
+  })
+})
+
+test('element is not in viewport', function (t) {
+  t.plan(1)
+  disableViewport()
+  hydrophone.remove(node)
+  hydrophone.add(node, {
+    enters: function () {
+      t.fail()
+    }
+  })
+  t.pass()
+})
+
+test('element enters the viewport', function (t) {
+  t.plan(1)
+  disableViewport()
+  hydrophone.remove(node)
+  hydrophone.add(node, {
+    enters: function () {
+      t.pass()
+    }
+  })
+  enableViewport()
+  fireEvent()
+})
+
+test('element leaves the viewport', function (t) {
+  t.plan(1)
+  enableViewport()
+  hydrophone.remove(node)
+  hydrophone.add(node, {
+    leaves: function () {
+      t.pass()
+    }
+  })
+  disableViewport()
+  fireEvent()
+})

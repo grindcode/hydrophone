@@ -10,7 +10,7 @@ var pulsarID = "hydrophone"
 // Add a beacon
 var add = function (node, events) {
   if (!isBrowser) return
-  const beacon = scanBeacon({
+  var beacon = scanBeacon({
     node: node,
     enters: events.enters,
     leaves: events.leaves,
@@ -42,7 +42,7 @@ var deregister = function () {
 }
 
 var scanBeacon = function (beacon) {
-  let visible = isVisible(beacon)
+  var visible = isVisible(beacon)
   if (beacon.visible === visible) return beacon
   beacon.visible = visible
   if (visible && beacon.enters) {
@@ -55,9 +55,9 @@ var scanBeacon = function (beacon) {
 
 var isVisible = function (beacon) {
   if (!isBrowser) return false
-  const rect = beacon.node.getBoundingClientRect()
-  const height = window.innerHeight || document.documentElement.clientHeight
-  const width = window.innerWidth || document.documentElement.clientWidth
+  var rect = beacon.node.getBoundingClientRect()
+  var height = window.innerHeight || document.documentElement.clientHeight
+  var width = window.innerWidth || document.documentElement.clientWidth
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&

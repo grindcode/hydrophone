@@ -34,7 +34,7 @@
     "codeclimate-test-reporter": "^0.4.0",
     "jsdom": "^9.4.1",
     "jsdom-global": "^2.0.0",
-    "nyc": "^8.4.0",
+    "nyc": "^9.0.1",
     "tape": "^4.5.1"
   }
 }

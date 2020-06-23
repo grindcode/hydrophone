@@ -1,27 +1,27 @@
-var pulsar = require('tiny-pulsar')
+const pulsar = require('tiny-pulsar')
 
 // Registered beacons
-var beacons = []
+let beacons = []
 // Is a browser enviroment
-var isBrowser = typeof window !== "undefined"
+const isBrowser = typeof window !== 'undefined'
 // Namespace used for pulsar
-var pulsarID = "hydrophone"
+const pulsarID = 'hydrophone'
 
 // Add a beacon
-var add = function (node, events) {
+function add (node, events) {
   if (!isBrowser) return
-  var beacon = scanBeacon({
+  const beacon = scanBeacon({
     node: node,
     enters: events.enters,
     leaves: events.leaves,
-    visible: false,
+    visible: false
   })
   beacons = beacons.concat(beacon)
   register()
 }
 
 // Remove a beacon
-var remove = function (node) {
+function remove (node) {
   if (!isBrowser) return
   beacons = beacons.filter(function (item) {
     return item.node !== node
@@ -29,19 +29,19 @@ var remove = function (node) {
   deregister()
 }
 
-var register = function () {
+function register () {
   if (beacons.length !== 1) return
   pulsar.register(pulsarID, function () {
     beacons = beacons.map(scanBeacon)
   })
 }
 
-var deregister = function () {
+function deregister () {
   if (beacons.length) return
   pulsar.deregister(pulsarID)
 }
 
-var scanBeacon = function (beacon) {
+function scanBeacon (beacon) {
   var visible = isVisible(beacon)
   if (beacon.visible === visible) return beacon
   beacon.visible = visible
@@ -53,11 +53,11 @@ var scanBeacon = function (beacon) {
   return beacon
 }
 
-var isVisible = function (beacon) {
+function isVisible (beacon) {
   if (!isBrowser) return false
-  var rect = beacon.node.getBoundingClientRect()
-  var height = window.innerHeight || document.documentElement.clientHeight
-  var width = window.innerWidth || document.documentElement.clientWidth
+  const rect = beacon.node.getBoundingClientRect()
+  const height = window.innerHeight || document.documentElement.clientHeight
+  const width = window.innerWidth || document.documentElement.clientWidth
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
@@ -68,5 +68,5 @@ var isVisible = function (beacon) {
 
 module.exports = {
   add: add,
-  remove: remove,
+  remove: remove
 }

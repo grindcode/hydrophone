@@ -4,25 +4,25 @@ require('jsdom-global')()
 var hydrophone = require('../index.js')
 
 // Force scroll event in order to force recalculation. Could also be `resize`.
-var fireEvent = function () {
-  var scrollEvent = window.document.createEvent("Event")
-  scrollEvent.initEvent("scroll", true, true)
+function fireEvent () {
+  var scrollEvent = window.document.createEvent('Event')
+  scrollEvent.initEvent('scroll', true, true)
   window.dispatchEvent(scrollEvent)
 }
 
 // Sets window height in jsdom
-var setViewportHeight = function (height) {
+function setViewportHeight (height) {
   window.innerHeight = height
   document.documentElement.clientWidth = height
 }
 
-var enableViewport = function () {
+function enableViewport () {
   // Default window height value in jsdom.
   // Any positive numeric value will do the trick.
   setViewportHeight(768)
 }
 
-var disableViewport = function () {
+function disableViewport () {
   // Falsy window height fakes element not being inside the viewport.
   setViewportHeight(false)
 }

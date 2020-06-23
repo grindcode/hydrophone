@@ -1,5 +1,5 @@
 # Hydrophone
-[![Build Status](https://travis-ci.org/grindcode/hydrophone.svg?branch=master)](https://travis-ci.org/grindcode/hydrophone) [![Test Coverage](https://codeclimate.com/github/grindcode/hydrophone/badges/coverage.svg)](https://codeclimate.com/github/grindcode/hydrophone/coverage) [![Dependency Status](https://david-dm.org/grindcode/hydrophone.svg)](https://david-dm.org/grindcode/hydrophone) [![devDependency Status](https://david-dm.org/grindcode/hydrophone/dev-status.svg)](https://david-dm.org/grindcode/hydrophone#info=devDependencies)
+[![Build Status](https://travis-ci.org/grindcode/hydrophone.svg?branch=master)](https://travis-ci.org/grindcode/hydrophone) [![Dependency Status](https://david-dm.org/grindcode/hydrophone.svg)](https://david-dm.org/grindcode/hydrophone) [![devDependency Status](https://david-dm.org/grindcode/hydrophone/dev-status.svg)](https://david-dm.org/grindcode/hydrophone#info=devDependencies)
 
 Track when a DOM node enters or leaves the screen.
 

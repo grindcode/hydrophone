@@ -4,8 +4,7 @@
   "description": "Track when a DOM node enters or leaves the screen.",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*.js",
-    "report": "nyc tape test/*.js && nyc report --reporter=text-lcov | codeclimate-test-reporter"
+    "test": "tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -28,13 +27,11 @@
   },
   "homepage": "https://github.com/grindcode/hydrophone#readme",
   "dependencies": {
-    "tiny-pulsar": "^0.1.0"
+    "tiny-pulsar": "^1.0.0"
   },
   "devDependencies": {
-    "codeclimate-test-reporter": "^0.4.0",
-    "jsdom": "^9.4.1",
-    "jsdom-global": "^2.0.0",
-    "nyc": "^10.0.0",
-    "tape": "^5.0.0"
+    "jsdom": "^16.2.2",
+    "jsdom-global": "^3.0.2",
+    "tape": "^5.0.1"
   }
 }

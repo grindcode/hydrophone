@@ -1,18 +1,7 @@
 language: node_js
 node_js:
-  - "6.1"
-  - "6"
-  - "5.11"
-  - "5"
-  - "5.1"
-  - "4"
-  - "4.4"
-  - "4.3"
-  - "4.2"
-  - "4.1"
-  - "4.0"
+  - 'lts/*'
+  - 'node'
 branches:
   only:
   - master
-after_script:
-  - npm run report

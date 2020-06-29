@@ -3,6 +3,10 @@
 
 Track when a DOM node enters or leaves the screen.
 
+## Deprecated
+
+This module is deprecated. Please consider better alternatives like the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
 ## Get Started
 ```bash
 npm install hydrophone
